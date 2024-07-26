@@ -93,7 +93,8 @@ function M.define_autocommands()
 end
 
 -- Completion function for Astral commands
-function M.astral_complete(arg_lead, cmd_line, cursor_pos)
+---@diagnostic disable-next-line: unused-local
+function M.astral_complete(arg_lead, _cmd_line, _cursor_pos)
   local commands = { "reset" }
   return vim.tbl_filter(function(cmd)
     return vim.startswith(cmd, arg_lead)

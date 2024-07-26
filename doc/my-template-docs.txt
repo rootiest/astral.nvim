@@ -1,4 +1,4 @@
-*my-template-docs.txt*      For Neovim >= 0.8.0      Last change: 2024 July 25
+*my-template-docs.txt*      For Neovim >= 0.8.0      Last change: 2024 July 26
 
 ==============================================================================
 Table of Contents                         *my-template-docs-table-of-contents*
@@ -18,16 +18,12 @@ Table of Contents                         *my-template-docs-table-of-contents*
 
 
 
-`astral.nvim` is a Neovim plugin designed to enhance your editing experience
-with several useful utilities and configurations.
+`astral.nvim` is a Neovim plugin for colorscheme management.
 
 
 FEATURES                               *my-template-docs-astral.nvim-features*
 
-- Manage and restore colorschemes
-- Various utility functions like yanking lines without whitespace,
-    checking terminal type, etc.
-- Support for Neovide and additional plugins like precognition and hardtime
+- Remembers the last used colorscheme and restores it when Neovim opens.
 
 
 INSTALLATION                       *my-template-docs-astral.nvim-installation*
@@ -79,14 +75,12 @@ use the following `lazy.nvim` configuration:
 
 COMMANDS                               *my-template-docs-astral.nvim-commands*
 
-- **:SetColorscheme <name>**Set the colorscheme and save it to the settings file.
-- **:RestoreColorscheme**Restore the colorscheme from the settings file.
+- **:Astral reset**Reset the colorscheme management.
 
 
 AUTOCOMMANDS                       *my-template-docs-astral.nvim-autocommands*
 
-- **ColorScheme**Automatically updates the colorscheme in the
-    settings file when the colorscheme changes.
+- **ColorScheme**Store the new name when the colorscheme changes.
 
 
 LICENSE                                 *my-template-docs-astral.nvim-license*

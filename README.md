@@ -19,6 +19,7 @@ Using `lazy.nvim`, add the plugin to your configuration:
 require("lazy").setup({
     {
         "astral/astral.nvim",
+        version = "*",
     },
 })
 ```
@@ -46,6 +47,7 @@ use the following `lazy.nvim` configuration:
 require("lazy").setup({
     {
         "astral/astral.nvim",
+        version = "*",
         opts = {
             restore_colors = true, -- Set to false to disable colorscheme restoration
         }

@@ -2,6 +2,7 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/rootiest/astral.nvim/lint-test.yml?branch=main&style=for-the-badge)
 ![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+[![Astral.nvim](https://dotfyle.com/plugins/rootiest/astral.nvim/shield?style=for-the-badge)](https://dotfyle.com/plugins/rootiest/astral.nvim)
 
 ![Astral](astral.png)
 

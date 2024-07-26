@@ -1,32 +1,32 @@
-*astral-docs.txt*         For Neovim >= 0.9.0         Last change: 2024 July 26
+*astral-docs.txt*         For Neovim >= 0.9.0        Last change: 2024 July 26
 
 ==============================================================================
-Table of Contents                         *table-of-contents*
+Table of Contents                              *astral-docs-table-of-contents*
 
-1. astral.nvim                                                   |astral.nvim|
-  - Features                                            |astral.nvim-features|
-  - Installation                                    |astral.nvim-installation|
-  - Configuration                                  |astral.nvim-configuration|
-  - Commands                                            |astral.nvim-commands|
-  - Autocommands                                    |astral.nvim-autocommands|
-  - License                                              |astral.nvim-license|
-  - Contributing                                    |astral.nvim-contributing|
-2. Links                                                               |links|
+1. astral.nvim                                       |astral-docs-astral.nvim|
+  - Features                                |astral-docs-astral.nvim-features|
+  - Installation                        |astral-docs-astral.nvim-installation|
+  - Configuration                      |astral-docs-astral.nvim-configuration|
+  - Commands                                |astral-docs-astral.nvim-commands|
+  - Autocommands                        |astral-docs-astral.nvim-autocommands|
+  - License                                  |astral-docs-astral.nvim-license|
+  - Contributing                        |astral-docs-astral.nvim-contributing|
+2. Links                                                   |astral-docs-links|
 
 ==============================================================================
-1. astral.nvim                                  *astral.nvim*
+1. astral.nvim                                       *astral-docs-astral.nvim*
 
 
 
 `astral.nvim` is a Neovim plugin for colorscheme management.
 
 
-FEATURES                               *astral.nvim-features*
+FEATURES                                    *astral-docs-astral.nvim-features*
 
 - Remembers the last used colorscheme and restores it when Neovim opens.
 
 
-INSTALLATION                       *astral.nvim-installation*
+INSTALLATION                            *astral-docs-astral.nvim-installation*
 
 Using `lazy.nvim`, add the plugin to your configuration:
 
@@ -39,7 +39,7 @@ Using `lazy.nvim`, add the plugin to your configuration:
 <
 
 
-CONFIGURATION                     *astral.nvim-configuration*
+CONFIGURATION                          *astral-docs-astral.nvim-configuration*
 
 You can configure the `astral` plugin by passing a table of options to
 `require("astral").setup()`.
@@ -73,29 +73,29 @@ use the following `lazy.nvim` configuration:
 <
 
 
-COMMANDS                               *astral.nvim-commands*
+COMMANDS                                    *astral-docs-astral.nvim-commands*
 
 - **:Astral reset**Reset the colorscheme management.
 
 
-AUTOCOMMANDS                       *astral.nvim-autocommands*
+AUTOCOMMANDS                            *astral-docs-astral.nvim-autocommands*
 
 - **ColorScheme**Store the new name when the colorscheme changes.
 
 
-LICENSE                                 *astral.nvim-license*
+LICENSE                                      *astral-docs-astral.nvim-license*
 
 `astral.nvim` is licensed under the MIT License. See LICENSE <LICENSE> for
 details.
 
 
-CONTRIBUTING                       *astral.nvim-contributing*
+CONTRIBUTING                            *astral-docs-astral.nvim-contributing*
 
 Contributions are welcome! Please open an issue or submit a pull request to the
 GitHub repository <https://github.com/astral/astral.nvim>.
 
 ==============================================================================
-2. Links                                              *links*
+2. Links                                                   *astral-docs-links*
 
 1. *GitHub Workflow Status*: https://img.shields.io/github/actions/workflow/status/rootiest/astral.nvim/lint-test.yml?branch=main&style=for-the-badge
 2. *Lua*: https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua

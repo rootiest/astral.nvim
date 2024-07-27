@@ -65,7 +65,7 @@ function M.restore_colorscheme()
   end
 
   local colortheme = current_colorscheme
-  local fallback_themes = { "catppuccin-frappe", "tokyonight", "default" }
+  local fallback_themes = M.config.fallback_themes or { "catppuccin", "tokyonight", "default" }
 
   if colortheme and is_colorscheme_available(colortheme) then
     vim.cmd.colorscheme(colortheme)
@@ -93,7 +93,8 @@ function M.define_autocommands()
 end
 
 -- Completion function for Astral commands
-function M.astral_complete(arg_lead, cmd_line, cursor_pos)
+---@diagnostic disable-next-line: unused-local
+function M.astral_complete(arg_lead, _cmd_line, _cursor_pos)
   local commands = { "reset" }
   return vim.tbl_filter(function(cmd)
     return vim.startswith(cmd, arg_lead)
@@ -118,8 +119,10 @@ end
 
 ---@class Config
 ---@field restore_colors boolean Enable or disable colorscheme restoration
+---@field fallback_themes string[] List of fallback themes
 local config = {
   restore_colors = true, -- Default to true
+  fallback_themes = { "catppuccin", "tokyonight", "default" }, -- Default fallback themes
 }
 
 ---@type Config

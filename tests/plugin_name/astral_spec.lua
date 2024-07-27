@@ -6,7 +6,7 @@ describe("setup", function()
   end)
 
   it("works with custom var", function()
-    astral.setup({ restore_colors = true })
+    astral.setup({ restore_colors = true, fallback_themes = { "catppuccin", "tokyonight", "default" } })
     print("custom hello world")
   end)
 end)

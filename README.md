@@ -8,6 +8,9 @@
 
 `astral.nvim` is a Neovim plugin for colorscheme management.
 
+This very simple plugin allows Neovim to remember the last
+used colorscheme and restore it when Neovim opens.
+
 ## Features
 
 - Remembers the last used colorscheme and restores it when Neovim opens.
@@ -20,7 +23,7 @@ Using `lazy.nvim`, add the plugin to your configuration:
 require("lazy").setup({
     {
         "astral/astral.nvim",
-        version = "*",
+        version = "*", -- Pin to GitHub releases
     },
 })
 ```
@@ -41,14 +44,14 @@ local config = {
 
 ### Example Configuration
 
-To manually set all default values (though they are already set by default),
+To set the options for `astral`,
 use the following `lazy.nvim` configuration:
 
 ```lua
 require("lazy").setup({
     {
         "astral/astral.nvim",
-        version = "*",
+        version = "*", -- Pin to GitHub releases
         opts = {
             restore_colors = true, -- Set to false to disable colorscheme restoration
         }

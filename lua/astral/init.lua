@@ -65,7 +65,7 @@ function M.restore_colorscheme()
   end
 
   local colortheme = current_colorscheme
-  local fallback_themes = { "catppuccin-frappe", "tokyonight", "default" }
+  local fallback_themes = M.config.fallback_themes or { "catppuccin", "tokyonight", "default" }
 
   if colortheme and is_colorscheme_available(colortheme) then
     vim.cmd.colorscheme(colortheme)
@@ -119,8 +119,10 @@ end
 
 ---@class Config
 ---@field restore_colors boolean Enable or disable colorscheme restoration
+---@field fallback_themes string[] List of fallback themes
 local config = {
   restore_colors = true, -- Default to true
+  fallback_themes = { "catppuccin", "tokyonight", "default" }, -- Default fallback themes
 }
 
 ---@type Config

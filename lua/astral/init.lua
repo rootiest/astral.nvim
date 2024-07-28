@@ -5,14 +5,13 @@ local autocommands = require("astral.autocommands")
 
 local M = {}
 
----@type Config
 M.config = {
   fallback_themes = { "catppuccin", "tokyonight", "default" },
 }
 
 -- Setup function to initialize the plugin
----@param args Config?
-M.setup = function(args)
+---@param args table
+function M.setup(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
   M.restore_colorscheme()
   autocommands.define_autocommands()

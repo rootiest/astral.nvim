@@ -7,7 +7,7 @@ describe("Astral plugin setup", function()
   end)
 
   it("uses default configuration", function()
-    astral.setup()
+    astral.setup({})
     assert.are.same({ "catppuccin", "tokyonight", "default" }, astral.config.fallback_themes)
   end)
 

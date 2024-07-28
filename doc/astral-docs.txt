@@ -92,6 +92,7 @@ To set the options for `astral`, use the following `lazy.nvim` configuration:
 COMMANDS                                    *astral-docs-astral.nvim-commands*
 
 - **:Astral reset**Reset the colorscheme management.
+- `:Astral restore`Restore the last used colorscheme.
 
 
 AUTOCOMMANDS                            *astral-docs-astral.nvim-autocommands*
@@ -115,10 +116,12 @@ solutions:
 - Ensure that the fallback themes are installed and available in Neovim.
 
 
-3. **Unknown Astral command error**- Ensureyou are using valid commands. The available command is `:Astral reset`.
+3. **Unknown Astral command error**- Ensureyou are using valid commands. The available commands are:
+    - `:Astral reset`
+    - `:Astral restore`
 
 
-4. **Colorscheme changes not saved**- Ensurethere are no errors in the autocommand that triggers
+4. **Colorschemechanges not saved**- Ensurethere are no errors in the autocommand that triggers
     on the `ColorScheme` event.
 - Check if the `settings.json` file is writable and that your
     Neovim configuration allows writing to this path.

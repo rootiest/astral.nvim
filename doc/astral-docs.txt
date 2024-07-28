@@ -1,4 +1,4 @@
-*astral-docs.txt*         For Neovim >= 0.9.0        Last change: 2024 July 27
+*astral-docs.txt*         For Neovim >= 0.9.0        Last change: 2024 July 28
 
 ==============================================================================
 Table of Contents                              *astral-docs-table-of-contents*
@@ -19,7 +19,7 @@ Table of Contents                              *astral-docs-table-of-contents*
 
 <https://dotfyle.com/plugins/rootiest/astral.nvim>
 
-`astral.nvim` is a Neovim plugin for colorscheme management.
+`astral.nvim` is a Neovim plugin for colorscheme persistence.
 
 This very simple plugin allows Neovim to remember the last used colorscheme and
 restore it when Neovim opens.

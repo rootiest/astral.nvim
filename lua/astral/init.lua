@@ -5,12 +5,13 @@ local autocommands = require("astral.autocommands")
 
 local M = {}
 
+---@type Config
 M.config = {
-  fallback_themes = { "catppuccin", "tokyonight", "default" },
+  fallback_themes = { "catppuccin", "tokyonight", "default" }, -- Default fallback themes
 }
 
 -- Setup function to initialize the plugin
----@param args table
+---@param args Config?
 function M.setup(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
   M.restore_colorscheme()
@@ -18,10 +19,31 @@ function M.setup(args)
   M.define_commands()
 end
 
+function M.restore_colorscheme()
+  local function is_colorscheme_available(name)
+    local ok = pcall(vim.cmd, "colorscheme " .. name)
+    return ok
+  end
+
+  local colortheme = vim.g.COLORTHEME
+  local fallback_themes = M.config.fallback_themes
+
+  if colortheme and is_colorscheme_available(colortheme) then
+    vim.cmd("colorscheme " .. colortheme)
+  else
+    for _, theme in ipairs(fallback_themes) do
+      if is_colorscheme_available(theme) then
+        vim.cmd("colorscheme " .. theme)
+        break
+      end
+    end
+  end
+end
+
 function M.define_commands()
   vim.api.nvim_create_user_command("Astral", function(params)
     if params.args == "reset" then
-      M.reset_colorscheme()
+      vim.g.COLORTHEME = nil
     elseif params.args == "restore" then
       M.restore_colorscheme()
     else
@@ -38,39 +60,6 @@ function M.define_commands()
       end, commands)
     end,
   })
-end
-
-function M.restore_colorscheme()
-  local function is_colorscheme_available(name)
-    local ok, _ = pcall(function()
-      vim.cmd("colorscheme " .. name)
-    end)
-    return ok
-  end
-
-  local colortheme = vim.g.COLORTHEME
-  if colortheme and is_colorscheme_available(colortheme) then
-    vim.cmd("colorscheme " .. colortheme)
-  else
-    for _, theme in ipairs(M.config.fallback_themes) do
-      if is_colorscheme_available(theme) then
-        vim.cmd("colorscheme " .. theme)
-        vim.g.COLORTHEME = theme
-        break
-      end
-    end
-  end
-end
-
-function M.reset_colorscheme()
-  for _, theme in ipairs(M.config.fallback_themes) do
-    if pcall(function()
-      vim.cmd("colorscheme " .. theme)
-    end) then
-      vim.g.COLORTHEME = theme
-      break
-    end
-  end
 end
 
 return M

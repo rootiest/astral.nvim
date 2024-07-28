@@ -73,6 +73,7 @@ require("lazy").setup({
 ## Commands
 
 - **`:Astral reset`**: Reset the colorscheme management.
+- `:Astral restore`: Restore the last used colorscheme.
 
 ## Autocommands
 
@@ -94,7 +95,9 @@ If you encounter issues with `astral.nvim`, here are some common problems and so
    - Ensure that the fallback themes are installed and available in Neovim.
 
 3. **Unknown Astral command error**:
-   - Ensure you are using valid commands. The available command is `:Astral reset`.
+   - Ensure you are using valid commands. The available commands are:
+     - **`:Astral reset`
+     - `:Astral restore`
 
 4. **Colorscheme changes not saved**:
    - Ensure there are no errors in the autocommand that triggers

@@ -1,37 +1,54 @@
 ---@class Config
----@field restore_colors boolean Enable or disable colorscheme restoration
 ---@field fallback_themes string[] List of fallback themes
 
-local settings = require("astral.settings")
 local autocommands = require("astral.autocommands")
 
 local M = {}
 
 ---@type Config
 M.config = {
-  restore_colors = true, -- Default to true
   fallback_themes = { "catppuccin", "tokyonight", "default" }, -- Default fallback themes
 }
 
 -- Setup function to initialize the plugin
 ---@param args Config?
-M.setup = function(args)
+function M.setup(args)
   M.config = vim.tbl_deep_extend("force", M.config, args or {})
-
-  settings.ensure_settings_file()
-  settings.init_settings()
-  settings.restore_colorscheme(M.config)
-
+  M.restore_colorscheme()
   autocommands.define_autocommands()
   M.define_commands()
+end
+
+function M.restore_colorscheme()
+  local function is_colorscheme_available(name)
+    local ok = pcall(function()
+      vim.cmd("colorscheme " .. name)
+    end)
+    return ok
+  end
+
+  local colortheme = vim.g.COLORTHEME
+  local fallback_themes = M.config.fallback_themes
+
+  if colortheme and is_colorscheme_available(colortheme) then
+    vim.cmd("colorscheme " .. colortheme)
+  else
+    for _, theme in ipairs(fallback_themes) do
+      if is_colorscheme_available(theme) then
+        vim.cmd("colorscheme " .. theme)
+        break
+      end
+    end
+  end
 end
 
 function M.define_commands()
   vim.api.nvim_create_user_command("Astral", function(params)
     if params.args == "reset" then
-      settings.reset_colorscheme()
+      vim.g.COLORTHEME = nil
+      M.restore_colorscheme()
     elseif params.args == "restore" then
-      M.setup(M.config)
+      M.restore_colorscheme()
     else
       vim.api.nvim_err_writeln("Unknown Astral command: " .. params.args)
     end

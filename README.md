@@ -18,7 +18,9 @@ used colorscheme and restore it when Neovim opens.
 
 ## Installation
 
-Using `lazy.nvim`, add the plugin to your configuration:
+### Using `lazy.nvim`
+
+Add the plugin to your configuration:
 
 ```lua
 require("lazy").setup({
@@ -27,6 +29,37 @@ require("lazy").setup({
         version = "*", -- Pin to GitHub releases
     },
 })
+```
+
+### Using `packer.nvim`
+
+```lua
+return require('packer').startup(function(use)
+    use {
+        'astral/astral.nvim',
+        config = function()
+            require('astral').setup({
+                -- your plugin options here
+            })
+        end
+    }
+end)
+```
+
+### Using `vim-plug`
+
+```vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'astral/astral.nvim'
+
+call plug#end()
+
+lua << EOF
+require('astral').setup({
+    -- your plugin options here
+})
+EOF
 ```
 
 ## Configuration
@@ -49,8 +82,23 @@ local config = {
 
 ### Example Configuration
 
-To set the options for `astral`,
-use the following `lazy.nvim` configuration:
+To set the options for `astral`, use the following configuration:
+
+```lua
+require('astral').setup({
+    fallback_themes = { -- Customize fallback themes
+        "catppuccin",
+        "tokyonight",
+        "default"
+    },
+})
+```
+
+### Integrating with Plugin Managers
+
+For each plugin manager, integrate the configuration as follows:
+
+#### `lazy.nvim`
 
 ```lua
 require("lazy").setup({
@@ -67,6 +115,45 @@ require("lazy").setup({
     },
 })
 ```
+
+#### `packer.nvim`
+
+```lua
+return require('packer').startup(function(use)
+    use {
+        'astral/astral.nvim',
+        config = function()
+            require('astral').setup({
+                fallback_themes = { -- Customize fallback themes
+                    "catppuccin",
+                    "tokyonight",
+                    "default"
+                },
+            })
+        end
+    }
+end)
+```
+
+#### `vim-plug`
+
+```vim
+call plug#begin('~/.vim/plugged')
+
+Plug 'astral/astral.nvim'
+
+call plug#end()
+
+lua << EOF
+require('astral').setup({
+    fallback_themes = { -- Customize fallback themes
+        "catppuccin",
+        "tokyonight",
+        "default"
+    },
+})
+EOF
+``````
 
 ## Commands
 

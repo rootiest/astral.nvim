@@ -1,4 +1,4 @@
-local astral = require("astral.init")
+local astral = require("astral.setup")
 
 return {
   setup = astral.setup,

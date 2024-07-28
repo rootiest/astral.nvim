@@ -14,7 +14,6 @@ describe("setup", function()
   it("restores colorscheme from vim.g.COLORTHEME", function()
     vim.g.COLORTHEME = "gruvbox"
     astral.setup()
-    astral.restore_colorscheme()
     assert.are.equal("gruvbox", vim.g.colors_name)
   end)
 end)

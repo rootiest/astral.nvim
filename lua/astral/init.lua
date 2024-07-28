@@ -21,7 +21,9 @@ end
 
 function M.restore_colorscheme()
   local function is_colorscheme_available(name)
-    local ok = pcall(vim.cmd, "colorscheme " .. name)
+    local ok = pcall(function()
+      vim.cmd("colorscheme " .. name)
+    end)
     return ok
   end
 
@@ -44,6 +46,7 @@ function M.define_commands()
   vim.api.nvim_create_user_command("Astral", function(params)
     if params.args == "reset" then
       vim.g.COLORTHEME = nil
+      M.restore_colorscheme()
     elseif params.args == "restore" then
       M.restore_colorscheme()
     else

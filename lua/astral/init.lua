@@ -7,7 +7,7 @@ local M = {}
 
 ---@type Config
 M.config = {
-  fallback_themes = { "catppuccin", "tokyonight", "default" }, -- Default fallback themes
+  fallback_themes = { "catppuccin", "tokyonight", "default" },
 }
 
 -- Setup function to initialize the plugin

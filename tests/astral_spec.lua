@@ -1,6 +1,4 @@
 local astral = require("astral")
-local helpers = require("plenary.nvim_helpers")
-local assert = require("luassert")
 
 describe("Astral plugin setup", function()
   before_each(function()
@@ -21,9 +19,6 @@ describe("Astral plugin setup", function()
 
   it("restores colorscheme from vim.g.COLORTHEME", function()
     vim.g.COLORTHEME = "gruvbox"
-    local function is_colorscheme_available(name)
-      return name == "gruvbox"
-    end
     astral.setup({ fallback_themes = { "catppuccin", "tokyonight", "default" } })
     astral.restore_colorscheme()
     assert.are.equal(vim.g.COLORTHEME, "gruvbox")

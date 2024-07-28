@@ -4,6 +4,8 @@ describe("Astral plugin setup", function()
   before_each(function()
     -- Clear any previous state
     vim.g.COLORTHEME = nil
+    package.loaded["astral"] = nil
+    astral = require("astral")
   end)
 
   it("uses default configuration", function()
@@ -21,13 +23,14 @@ describe("Astral plugin setup", function()
     vim.g.COLORTHEME = "gruvbox"
     astral.setup({ fallback_themes = { "catppuccin", "tokyonight", "default" } })
     astral.restore_colorscheme()
-    assert.are.equal(vim.g.COLORTHEME, "gruvbox")
+    assert.are.equal("gruvbox", vim.g.colors_name)
   end)
 
   it("falls back to default themes if COLORTHEME is not set or unavailable", function()
     vim.g.COLORTHEME = nil
     astral.setup({ fallback_themes = { "gruvbox", "onedark" } })
     astral.restore_colorscheme()
-    assert.is_true(vim.g.COLORTHEME == "gruvbox" or vim.g.COLORTHEME == "onedark")
+    local colortheme = vim.g.colors_name
+    assert.is_true(colortheme == "gruvbox" or colortheme == "onedark")
   end)
 end)

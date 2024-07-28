@@ -6,7 +6,7 @@
 
 ![Astral](astral.png)
 
-`astral.nvim` is a Neovim plugin for colorscheme management.
+`astral.nvim` is a Neovim plugin for colorscheme persistence.
 
 This very simple plugin allows Neovim to remember the last
 used colorscheme and restore it when Neovim opens.

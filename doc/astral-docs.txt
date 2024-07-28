@@ -57,7 +57,6 @@ The default values for `astral` configuration are:
 
 >lua
     local config = {
-        restore_colors = true, -- Enable or disable automatic colorscheme restoration
         fallback_themes = { -- Default fallback themes
             "catppuccin",
             "tokyonight",
@@ -77,7 +76,6 @@ To set the options for `astral`, use the following `lazy.nvim` configuration:
             "astral/astral.nvim",
             version = "*", -- Pin to GitHub releases
             opts = {
-                restore_colors = true, -- Set to false to disable colorscheme restoration
                 fallback_themes = { -- Customize fallback themes
                     "catppuccin",
                     "tokyonight",
@@ -91,7 +89,7 @@ To set the options for `astral`, use the following `lazy.nvim` configuration:
 
 COMMANDS                                    *astral-docs-astral.nvim-commands*
 
-- **:Astral reset**Reset the colorscheme management.
+- `:Astral reset`Reset the colorscheme management.
 - `:Astral restore`Restore the last used colorscheme.
 
 
@@ -106,9 +104,7 @@ If you encounter issues with `astral.nvim`, here are some common problems and
 solutions:
 
 1. **Colorscheme not restoring on startup**- Ensure`restore_colors` is set to `true` in the configuration.
-- Check if the `settings.json` file exists in the `data` path
-    (`vim.fn.stdpath("data") .. "/lazy/astral.nvim/settings.json"`).
-    If not, the plugin should create it automatically.
+- Check if `vim.g.COLORTHEME` is set and holds the correct colorscheme name.
 
 
 2. **Fallback themes not applied**- Verifythat the `fallback_themes` array in the configuration contains
@@ -121,10 +117,10 @@ solutions:
     - `:Astral restore`
 
 
-4. **Colorschemechanges not saved**- Ensurethere are no errors in the autocommand that triggers
-    on the `ColorScheme` event.
-- Check if the `settings.json` file is writable and that your
-    Neovim configuration allows writing to this path.
+4. **Colorscheme changes not saved**- Ensurethere are no errors in the autocommand that triggers on the
+    `ColorScheme` event.
+- Check if `vim.g.COLORTHEME` is being updated correctly when you change the
+    colorscheme.
 
 
 

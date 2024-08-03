@@ -23,3 +23,22 @@ jobs:
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+  publish-gh-page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: pandoc markdown to html
+        uses: docker://pandoc/latex:3.1
+        with:
+          args: >-
+            --katex --from markdown+tex_math_single_backslash --to html5+smart
+            --template="./scripts/template.html5" --css="/panvimdoc/css/theme.css"
+            --css="/panvimdoc/css/skylighting-solarized-theme.css" --toc --wrap=none --metadata
+            title="panvimdoc" doc/panvimdoc.md --lua-filter=scripts/include-files.lua
+            --lua-filter=scripts/skip-blocks.lua -t html -o public/index.html
+      - name: deploy to GitHub pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public

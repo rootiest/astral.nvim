@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global, undefined-field
 local astral = require("astral")
 
 local function reload()

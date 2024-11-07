@@ -23,7 +23,7 @@ Using `lazy.nvim`, add the plugin to your configuration:
 ```lua
 require("lazy").setup({
     {
-        "astral/astral.nvim",
+        "rootiest/astral.nvim",
         version = "*", -- Pin to GitHub releases
     },
 })
